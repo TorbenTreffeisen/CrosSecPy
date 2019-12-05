@@ -8,16 +8,9 @@ def ans_csvdataimp_complete(name):      # list_files, result_parameter, list_key
     return df
 
 
-
-def ans_printcsv(listfiles, results, listkeys):
-    printcsv = ans_csvdataimp_complete(listfiles, results, listkeys)
-    return printcsv.to_csv('complete_results.csv')
-
-
 def ans_calc(results, parameter, calc):
     df_calc = pd.concat([results['x'], results['y'], results[parameter]], axis=1)
     df_calc.columns = ['x', 'y', parameter]
-
 
     def calc_to_negmpa(row):
         return row[parameter] * ((-1) / 1000000)

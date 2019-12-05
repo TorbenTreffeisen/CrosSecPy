@@ -1,6 +1,5 @@
 from qtpy import QtWidgets
 from gui.mainwindow import Ui_MainWindow
-#from gui.mainwindow_short import Ui_MainWindow
 
 from filepaths import *
 from dic_def import *
@@ -11,7 +10,6 @@ from matplotlib.pyplot import *
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
-
 app = QtWidgets.QApplication(sys.argv)
 
 
@@ -21,10 +19,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
-        # self.input_file()  # Laden des CSV-Files
-
-        # self.ui.psb_plot.clicked.connect(self.plot_results)   # Speichern der Daten in Tabelle
 
         self.ui.pb_models.clicked.connect(self.models_changed)
         self.ui.pb_models_2.clicked.connect(self.models_predefined)
@@ -64,9 +58,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.ui.radb_freesel.setChecked(True)
 
-        # evaluating checkbox
-        # path übernehmen
-
     def models_predefined(self):
         self.ui.cbx_mod1.clear()
         self.ui.cbx_mod2.clear()
@@ -82,12 +73,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.cbx_mod2.addItems(models)
 
         self.ui.radb_predsel.setChecked(True)
-
-        # evaluating checkbox
-        # path übernehmen
-
-
-# changen der dropdowns on input
 
     def cat_c1_changed(self):
         self.ui.cbx_scat_c1.clear()
@@ -189,9 +174,6 @@ class MainWindow(QtWidgets.QMainWindow):
         else:
             self.ui.cbx_scat_c4.addItems(" ")
 
-# change modelpath on dropdowns
-
-
     def model1_input_change(self):
 
         self.ui.cbx_inp_model_m1.clear()
@@ -217,9 +199,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.cbx_inp_model_m2.addItems(mod2key)
         else:
             self.ui.cbx_inp_model_m2.addItems(" ")
-
-
-#
 
     def plot_results(self):
         user_cat_c1 = self.ui.cbx_cat_c1.currentText()

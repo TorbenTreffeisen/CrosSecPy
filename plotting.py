@@ -1,5 +1,6 @@
 from dataimp import *
 
+
 def plot_df(results, dic, key):
     df_res = ans_calc(results, dic[key][0], dic[key][1])
     xval = df_res['x']
@@ -63,4 +64,3 @@ def plot_diff_df(results1, results2, dic, key):
     minval = df_res[diff].min()
 
     return xval, yval, zval, chead, output, minval, maxval
-

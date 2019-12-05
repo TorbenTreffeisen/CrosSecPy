@@ -1,5 +1,4 @@
 from qtpy import QtWidgets
-#from gui.mainwindow import Ui_MainWindow
 from gui.mainwindow_short import Ui_MainWindow
 
 from filepaths import *
@@ -43,8 +42,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.cbx_inp_depth_m1.currentTextChanged.connect(self.model1_input_change)
         self.ui.cbx_inp_depth_m2.currentTextChanged.connect(self.model2_input_change)
 
-# input Models
-
     def models_changed(self):
         self.ui.cbx_mod1.clear()
         self.ui.cbx_mod2.clear()
@@ -58,7 +55,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.cbx_mod2.addItems(models)
 
         self.ui.radb_freesel.setChecked(True)
-
 
     def models_predefined(self):
         self.ui.cbx_mod1.clear()
@@ -75,9 +71,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.cbx_mod2.addItems(models)
 
         self.ui.radb_predsel.setChecked(True)
-
-
-# changen der dropdowns on input
 
     def cat_c1_changed(self):
         self.ui.cbx_scat_c1.clear()
@@ -159,9 +152,6 @@ class MainWindow(QtWidgets.QMainWindow):
         else:
             self.ui.cbx_scat_c4.addItems(" ")
 
-# change modelpath on dropdowns
-
-
     def model1_input_change(self):
 
         self.ui.cbx_inp_model_m1.clear()
@@ -187,8 +177,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.cbx_inp_model_m2.addItems(mod2key)
         else:
             self.ui.cbx_inp_model_m2.addItems(" ")
-
-
 
     def plot_results(self):
         user_cat_c1 = self.ui.cbx_cat_c1.currentText()
@@ -281,11 +269,9 @@ class MainWindow(QtWidgets.QMainWindow):
                 model_path1 = model_path_m2
                 model_path2 = model_path_m2
 
-
         # Calculations
         results_mod1 = ans_csvdataimp_complete(model_path1)
         results_mod2 = ans_csvdataimp_complete(model_path2)
-
 
         xval_f1_m1, yval_f1_m1, zval_f1_m1, chead_f1_m1, output_title_f1_m1 = plot_df(results_mod1, input_output, key_f1)
         xval_f2_m1, yval_f2_m1, zval_f2_m1, chead_f2_m1, output_title_f2_m1 = plot_df(results_mod1, input_output, key_f2)
@@ -307,7 +293,6 @@ class MainWindow(QtWidgets.QMainWindow):
         user_graduation_f3 = np.linspace(min_f3, max_f3, user_cshades_c3, endpoint=True)
         user_graduation_f4 = np.linspace(min_f4, max_f4, user_cshades_c4, endpoint=True)
 
-
         colm = colormap(user_colormap)
 
         fig = plt.figure(constrained_layout=True, figsize=(18, 9))
@@ -321,7 +306,7 @@ class MainWindow(QtWidgets.QMainWindow):
         zi = griddata((xval_f1_m1, yval_f1_m1), zval_f1_m1, (xi[None, :], yi[:, None]), method='linear')
         cf_f1_1 = plt.contourf(xi, yi, zi, user_graduation_f1, cmap=colm)
 
-        f1_ax1.axes.get_xaxis().set_visible(False)  # Achsen unsichtbar machen
+        f1_ax1.axes.get_xaxis().set_visible(False)
 
         plt.ylabel(user_mod1)
 
@@ -519,15 +504,10 @@ class MainWindow(QtWidgets.QMainWindow):
         zi = griddata((xval_f1_diff1, yval_f1_diff1), zval_f1_diff1, (xi[None, :], yi[:, None]), method='linear')
         cf_f1_1 = plt.contourf(xi, yi, zi, user_graduation_diff_f1, cmap=colm)
 
-        #f1_diff_ax1.axes.get_xaxis().set_visible(False)  # Achsen unsichtbar machen
-
-
         plt.ylabel('differences')
 
         plt.title(output_title_f1_diff1)
         fig_diff.colorbar(cf_f1_1, location='bottom')
-
-
 
         # figure 2
 

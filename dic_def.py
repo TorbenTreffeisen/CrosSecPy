@@ -82,4 +82,3 @@ input_output = {'pressure--': ['pres', 'pos_mpa', 'Pressure in MPa'],
                 'tot. strain-syz': ['tot. StrYZ', 'perc', 'SYZ total Strain in %'],
                 'tot. strain-sxz': ['tot. StrXZ', 'perc', 'SXZ total Strain in %'],
                 }
-
