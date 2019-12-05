@@ -1,26 +1,4 @@
 
-file1 = "results_all_presseqv.csv"
-file2 = "results_all_stress.csv"
-file3 = "results_all_elstr.csv"
-file4 = "results_all_plstr.csv"
-file5 = "results_all_tstr.csv"
-file6 = "results_all_addvalues.csv"
-file7 = "results_all_estress.csv"
-
-list_files = [file1, file2, file3, file4, file5, file6, file7]
-list_filestring = ['file1', 'file2', 'file3', 'file4', 'file5', 'file6', 'file7']
-
-result_parameters = {
-    'file1': ['node', 'x', 'y', 'z', 'pres', 'stress', 'el. strain', 'pl. strain', 'tot. strain'],
-    'file2': ['node', 'S1', 'S2', 'S3', 'SXX', 'SYY', 'SZZ', 'SXY', 'SYZ', 'SXZ'],
-    'file3': ['node', 'el. Str1', 'el. Str2', 'el. Str3', 'el. StrXX', 'el. StrYY', 'el. StrZZ',
-              'el. StrXY', 'el. StrYZ', 'el. StrXZ'],
-    'file4': ['node', 'pl. Str1', 'pl. Str2', 'pl. Str3', 'pl. StrXX', 'pl. StrYY', 'pl. StrZZ',
-              'pl. StrXY', 'pl. StrYZ', 'pl. StrXZ'],
-    'file5': ['node', 'tot. Str1', 'tot. Str2', 'tot. Str3', 'tot. StrXX', 'tot. StrYY', 'tot. StrZZ',
-              'tot. StrXY', 'tot. StrYZ', 'tot. StrXZ'],
-    'file6': ['node', 'UX', 'UY', 'UZ', 'estress'],
-    'file7': ['node', 'ES1', 'ES2', 'ES3', 'ESXX', 'ESYY', 'ESZZ', 'ESXY', 'ESYZ', 'ESXZ']}
 
 input_output = {'pressure--': ['pres', 'pos_mpa', 'Pressure in MPa'],
                 'u-x': ['UX', 'false', 'X-Displacement in m'],
