@@ -1,37 +1,12 @@
 import pandas as pd
 
 
-def file_path(listfiles, modelpath):
-    respath = []
-    for file in listfiles:
-        respath.append(str(modelpath) + str(file))
-    return respath
+def ans_csvdataimp_complete(name):      # list_files, result_parameter, list_keys
+    df = pd.read_csv(name)          # Einlesen CSV
+    df = df.apply(pd.to_numeric)                               # Datatype to numeric ändern.
 
-def ans_csvimp_f1(name, results, key):
-    df = pd.read_csv(name, names=results[key], skiprows=1)
-    df = df.apply(pd.to_numeric)
     return df
 
-
-def ans_csvimp(name, results, key):
-    df = pd.read_csv(name, names=results[key], skiprows=1)
-    df = df.drop(columns=['node'])
-    df = df.apply(pd.to_numeric)
-    return df
-
-
-def ans_csvdataimp_complete(listfiles, results, listkeys):
-    df1 = ans_csvimp_f1(listfiles[0], results, listkeys[0])
-    df2 = ans_csvimp(listfiles[1], results, listkeys[1])
-    df3 = ans_csvimp(listfiles[2], results, listkeys[2])
-    df4 = ans_csvimp(listfiles[3], results, listkeys[3])
-    df5 = ans_csvimp(listfiles[4], results, listkeys[4])
-    df6 = ans_csvimp(listfiles[5], results, listkeys[5])
-    df7 = ans_csvimp(listfiles[6], results, listkeys[6])
-
-    df_res = pd.concat([df1, df2, df3, df4, df5, df6, df7], axis=1, sort=False)
-
-    return df_res
 
 
 def ans_printcsv(listfiles, results, listkeys):

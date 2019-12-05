@@ -1,6 +1,6 @@
 from qtpy import QtWidgets
-from gui.mainwindow import Ui_MainWindow
-#from gui.mainwindow_short import Ui_MainWindow
+#from gui.mainwindow import Ui_MainWindow
+from gui.mainwindow_short import Ui_MainWindow
 
 from filepaths import *
 from dic_def import *
@@ -14,17 +14,12 @@ import matplotlib.gridspec as gridspec
 
 app = QtWidgets.QApplication(sys.argv)
 
-
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
-        # self.input_file()  # Laden des CSV-Files
-
-        # self.ui.psb_plot.clicked.connect(self.plot_results)   # Speichern der Daten in Tabelle
 
         self.ui.pb_models.clicked.connect(self.models_changed)
         self.ui.pb_models_2.clicked.connect(self.models_predefined)
@@ -64,8 +59,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.ui.radb_freesel.setChecked(True)
 
-        # evaluating checkbox
-        # path übernehmen
 
     def models_predefined(self):
         self.ui.cbx_mod1.clear()
@@ -83,9 +76,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.ui.radb_predsel.setChecked(True)
 
-        # evaluating checkbox
-        # path übernehmen
-
 
 # changen der dropdowns on input
 
@@ -94,16 +84,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         cat1 = self.ui.cbx_cat_c1.currentText()
         res_pres = ['-']
-        res_u = ['x', 'y', 'z']
-        res_str = ['tot', 's1', 's2', 's3', 'sxx', 'syy', 'szz', 'sxy', 'syz', 'sxz']
+        res_str = ['tot']
 
         if cat1 == "pressure":
             self.ui.cbx_scat_c1.addItems(res_pres)
-        elif cat1 == "u":
-            self.ui.cbx_scat_c1.addItems(res_u)
         elif cat1 == "stress":
-            self.ui.cbx_scat_c1.addItems(res_str)
-        elif cat1 == "estress":
             self.ui.cbx_scat_c1.addItems(res_str)
         elif cat1 == "el. strain":
             self.ui.cbx_scat_c1.addItems(res_str)
@@ -119,16 +104,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         cat1 = self.ui.cbx_cat_c2.currentText()
         res_pres = ['-']
-        res_u = ['x', 'y', 'z']
-        res_str = ['tot', 's1', 's2', 's3', 'sxx', 'syy', 'szz', 'sxy', 'syz', 'sxz']
+        res_str = ['tot']
 
         if cat1 == "pressure":
             self.ui.cbx_scat_c2.addItems(res_pres)
-        elif cat1 == "u":
-            self.ui.cbx_scat_c2.addItems(res_u)
         elif cat1 == "stress":
-            self.ui.cbx_scat_c2.addItems(res_str)
-        elif cat1 == "estress":
             self.ui.cbx_scat_c2.addItems(res_str)
         elif cat1 == "el. strain":
             self.ui.cbx_scat_c2.addItems(res_str)
@@ -144,16 +124,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         cat1 = self.ui.cbx_cat_c3.currentText()
         res_pres = ['-']
-        res_u = ['x', 'y', 'z']
-        res_str = ['tot', 's1', 's2', 's3', 'sxx', 'syy', 'szz', 'sxy', 'syz', 'sxz']
+        res_str = ['tot']
 
         if cat1 == "pressure":
             self.ui.cbx_scat_c3.addItems(res_pres)
-        elif cat1 == "u":
-            self.ui.cbx_scat_c3.addItems(res_u)
         elif cat1 == "stress":
-            self.ui.cbx_scat_c3.addItems(res_str)
-        elif cat1 == "estress":
             self.ui.cbx_scat_c3.addItems(res_str)
         elif cat1 == "el. strain":
             self.ui.cbx_scat_c3.addItems(res_str)
@@ -169,16 +144,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         cat1 = self.ui.cbx_cat_c4.currentText()
         res_pres = ['-']
-        res_u = ['x', 'y', 'z']
-        res_str = ['tot', 's1', 's2', 's3', 'sxx', 'syy', 'szz', 'sxy', 'syz', 'sxz']
+        res_str = ['tot']
 
         if cat1 == "pressure":
             self.ui.cbx_scat_c4.addItems(res_pres)
-        elif cat1 == "u":
-            self.ui.cbx_scat_c4.addItems(res_u)
         elif cat1 == "stress":
-            self.ui.cbx_scat_c4.addItems(res_str)
-        elif cat1 == "estress":
             self.ui.cbx_scat_c4.addItems(res_str)
         elif cat1 == "el. strain":
             self.ui.cbx_scat_c4.addItems(res_str)
@@ -219,7 +189,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.cbx_inp_model_m2.addItems(" ")
 
 
-#
 
     def plot_results(self):
         user_cat_c1 = self.ui.cbx_cat_c1.currentText()
@@ -312,9 +281,11 @@ class MainWindow(QtWidgets.QMainWindow):
                 model_path1 = model_path_m2
                 model_path2 = model_path_m2
 
+
         # Calculations
         results_mod1 = ans_csvdataimp_complete(model_path1)
         results_mod2 = ans_csvdataimp_complete(model_path2)
+
 
         xval_f1_m1, yval_f1_m1, zval_f1_m1, chead_f1_m1, output_title_f1_m1 = plot_df(results_mod1, input_output, key_f1)
         xval_f2_m1, yval_f2_m1, zval_f2_m1, chead_f2_m1, output_title_f2_m1 = plot_df(results_mod1, input_output, key_f2)
@@ -335,6 +306,7 @@ class MainWindow(QtWidgets.QMainWindow):
         user_graduation_f2 = np.linspace(min_f2, max_f2, user_cshades_c2, endpoint=True)
         user_graduation_f3 = np.linspace(min_f3, max_f3, user_cshades_c3, endpoint=True)
         user_graduation_f4 = np.linspace(min_f4, max_f4, user_cshades_c4, endpoint=True)
+
 
         colm = colormap(user_colormap)
 
@@ -518,7 +490,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 model_path1 = model_path_m2
                 model_path2 = model_path_m2
 
-        # Calculations
         results_mod1 = ans_csvdataimp_complete(model_path1)
         results_mod2 = ans_csvdataimp_complete(model_path2)
 
@@ -532,6 +503,7 @@ class MainWindow(QtWidgets.QMainWindow):
         user_graduation_diff_f2 = np.linspace(min_diff_f2, max_diff_f2, user_cshades_c2, endpoint=True)
         user_graduation_diff_f3 = np.linspace(min_diff_f3, max_diff_f3, user_cshades_c3, endpoint=True)
         user_graduation_diff_f4 = np.linspace(min_diff_f4, max_diff_f4, user_cshades_c4, endpoint=True)
+
 
         colm = colormap(user_colormap)
 
@@ -547,11 +519,14 @@ class MainWindow(QtWidgets.QMainWindow):
         zi = griddata((xval_f1_diff1, yval_f1_diff1), zval_f1_diff1, (xi[None, :], yi[:, None]), method='linear')
         cf_f1_1 = plt.contourf(xi, yi, zi, user_graduation_diff_f1, cmap=colm)
 
+        #f1_diff_ax1.axes.get_xaxis().set_visible(False)  # Achsen unsichtbar machen
+
 
         plt.ylabel('differences')
 
         plt.title(output_title_f1_diff1)
         fig_diff.colorbar(cf_f1_1, location='bottom')
+
 
 
         # figure 2
