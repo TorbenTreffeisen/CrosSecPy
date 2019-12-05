@@ -1,9 +1,9 @@
 import pandas as pd
 
 
-def ans_csvdataimp_complete(name):      # list_files, result_parameter, list_keys
-    df = pd.read_csv(name)          # Einlesen CSV
-    df = df.apply(pd.to_numeric)                               # Datatype to numeric ändern.
+def ans_csvdataimp_complete(name):
+    df = pd.read_csv(name)
+    df = df.apply(pd.to_numeric)
 
     return df
 
