@@ -1,6 +1,6 @@
 
-predefined_paths_mod1 = {'mod1_sub1_complete': ['D:/PyDev/CrosSecPy/input_files/Mod1/submod1']}
-predefined_paths_mod2 = {'mod2_sub1_complete': ['D:/PyDev/CrosSecPy/input_files/Mod2/submod1']}
+predefined_paths_mod1 = {'mod1_sub1_complete': ['input_files/Mod1/submod1']}
+predefined_paths_mod2 = {'mod2_sub1_complete': ['input_files/Mod2/submod1']}
 
 depth_keys = {
     'Mod1': ['predefined_paths_mod1'],
